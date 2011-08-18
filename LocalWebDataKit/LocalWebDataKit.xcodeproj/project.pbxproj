@@ -37,6 +37,7 @@
 			isa = PBXGroup;
 			children = (
 				40292F7913FDBCDA008EE328 /* LocalWebDataKit */,
+				40292F7A13FDBCDA008EE328 /* Supporting Files */,
 				40292F7613FDBCDA008EE328 /* Frameworks */,
 				40292F7513FDBCDA008EE328 /* Products */,
 			);
@@ -64,7 +65,6 @@
 				40292F7C13FDBCDA008EE328 /* LocalWebDataKit.h */,
 				4004E4FD13FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.h */,
 				4004E4FE13FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.m */,
-				40292F7A13FDBCDA008EE328 /* Supporting Files */,
 			);
 			path = LocalWebDataKit;
 			sourceTree = "<group>";
@@ -75,6 +75,7 @@
 				40292F7B13FDBCDA008EE328 /* LocalWebDataKit-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			path = LocalWebDataKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
