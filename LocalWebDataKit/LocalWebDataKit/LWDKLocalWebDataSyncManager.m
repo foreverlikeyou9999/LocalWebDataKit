@@ -10,14 +10,28 @@
 
 @implementation LWDKLocalWebDataSyncManager
 
-- (id)init
++ (LWDKLocalWebDataSyncManager *)sharedLocalWebDataSyncManager
 {
-    self = [super init];
-    if (self) {
-        // Initialization code here.
+    static LWDKLocalWebDataSyncManager *sharedLocalWebDataSyncManagerInstance = nil;
+    
+    if(!sharedLocalWebDataSyncManagerInstance) {
+        sharedLocalWebDataSyncManagerInstance = [[LWDKLocalWebDataSyncManager alloc] init];
     }
     
-    return self;
+    return sharedLocalWebDataSyncManagerInstance;
+}
+
+- (void)beginSyncingWithSeedDataPath:(NSString *)theSeedDataPath
+                      storedDataPath:(NSString *)theStoredDataPath
+                   remoteManifestURL:(NSURL *)theRemoteManifestURL
+                     refreshInterval:(NSTimeInterval)theRefreshInterval
+{
+    
+}
+
+- (void)stopSyncing
+{
+    
 }
 
 @end
