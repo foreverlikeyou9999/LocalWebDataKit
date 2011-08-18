@@ -14,6 +14,7 @@
 		4017B9A913FDBE8B008C12B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017B9A813FDBE8B008C12B1 /* main.m */; };
 		4017B9AD13FDBE8B008C12B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017B9AC13FDBE8B008C12B1 /* AppDelegate.m */; };
 		4017B9B013FDBE8B008C12B1 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4017B9AE13FDBE8B008C12B1 /* MainWindow.xib */; };
+		4044C99913FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4044C99813FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,9 +26,12 @@
 		4017B9A613FDBE8B008C12B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4017B9A813FDBE8B008C12B1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		4017B9AA13FDBE8B008C12B1 /* LocalWebDataKitSample-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "LocalWebDataKitSample-Prefix.pch"; sourceTree = "<group>"; };
-		4017B9AB13FDBE8B008C12B1 /* AppDelegate.h */ = {isa = PBXFileReference; path = AppDelegate.h; sourceTree = "<group>"; };
+		4017B9AB13FDBE8B008C12B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4017B9AC13FDBE8B008C12B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4017B9AF13FDBE8B008C12B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		4044C99613FDCFA6007E0D1E /* LocalWebDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalWebDataKit.h; path = ../../LocalWebDataKit/LocalWebDataKit/LocalWebDataKit.h; sourceTree = "<group>"; };
+		4044C99713FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LWDKLocalWebDataSyncManager.h; path = ../../LocalWebDataKit/LocalWebDataKit/LWDKLocalWebDataSyncManager.h; sourceTree = "<group>"; };
+		4044C99813FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LWDKLocalWebDataSyncManager.m; path = ../../LocalWebDataKit/LocalWebDataKit/LWDKLocalWebDataSyncManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,7 @@
 		4017B9A213FDBE8B008C12B1 /* LocalWebDataKitSample */ = {
 			isa = PBXGroup;
 			children = (
+				4044C99413FDCF8F007E0D1E /* LocalWebDataKit */,
 				4017B9AB13FDBE8B008C12B1 /* AppDelegate.h */,
 				4017B9AC13FDBE8B008C12B1 /* AppDelegate.m */,
 				4017B9AE13FDBE8B008C12B1 /* MainWindow.xib */,
@@ -91,6 +96,16 @@
 				4017B9AA13FDBE8B008C12B1 /* LocalWebDataKitSample-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		4044C99413FDCF8F007E0D1E /* LocalWebDataKit */ = {
+			isa = PBXGroup;
+			children = (
+				4044C99613FDCFA6007E0D1E /* LocalWebDataKit.h */,
+				4044C99713FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.h */,
+				4044C99813FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m */,
+			);
+			name = LocalWebDataKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +169,7 @@
 			files = (
 				4017B9A913FDBE8B008C12B1 /* main.m in Sources */,
 				4017B9AD13FDBE8B008C12B1 /* AppDelegate.m in Sources */,
+				4044C99913FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +279,7 @@
 				4017B9B513FDBE8B008C12B1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
