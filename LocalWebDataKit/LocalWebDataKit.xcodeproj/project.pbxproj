@@ -1,0 +1,229 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		40292F7813FDBCDA008EE328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40292F7713FDBCDA008EE328 /* Foundation.framework */; };
+		40292F7E13FDBCDA008EE328 /* LocalWebDataKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 40292F7D13FDBCDA008EE328 /* LocalWebDataKit.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		40292F7413FDBCDA008EE328 /* libLocalWebDataKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLocalWebDataKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		40292F7713FDBCDA008EE328 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		40292F7B13FDBCDA008EE328 /* LocalWebDataKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LocalWebDataKit-Prefix.pch"; path = "../LocalWebDataKit-Prefix.pch"; sourceTree = "<group>"; };
+		40292F7C13FDBCDA008EE328 /* LocalWebDataKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalWebDataKit.h; sourceTree = "<group>"; };
+		40292F7D13FDBCDA008EE328 /* LocalWebDataKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalWebDataKit.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		40292F7113FDBCDA008EE328 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40292F7813FDBCDA008EE328 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		40292F6913FDBCDA008EE328 = {
+			isa = PBXGroup;
+			children = (
+				40292F7913FDBCDA008EE328 /* LocalWebDataKit */,
+				40292F7613FDBCDA008EE328 /* Frameworks */,
+				40292F7513FDBCDA008EE328 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		40292F7513FDBCDA008EE328 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				40292F7413FDBCDA008EE328 /* libLocalWebDataKit.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		40292F7613FDBCDA008EE328 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				40292F7713FDBCDA008EE328 /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		40292F7913FDBCDA008EE328 /* LocalWebDataKit */ = {
+			isa = PBXGroup;
+			children = (
+				40292F7C13FDBCDA008EE328 /* LocalWebDataKit.h */,
+				40292F7D13FDBCDA008EE328 /* LocalWebDataKit.m */,
+				40292F7A13FDBCDA008EE328 /* Supporting Files */,
+			);
+			path = LocalWebDataKit;
+			sourceTree = "<group>";
+		};
+		40292F7A13FDBCDA008EE328 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				40292F7B13FDBCDA008EE328 /* LocalWebDataKit-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		40292F7213FDBCDA008EE328 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		40292F7313FDBCDA008EE328 /* LocalWebDataKit */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 40292F8113FDBCDA008EE328 /* Build configuration list for PBXNativeTarget "LocalWebDataKit" */;
+			buildPhases = (
+				40292F7013FDBCDA008EE328 /* Sources */,
+				40292F7113FDBCDA008EE328 /* Frameworks */,
+				40292F7213FDBCDA008EE328 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LocalWebDataKit;
+			productName = LocalWebDataKit;
+			productReference = 40292F7413FDBCDA008EE328 /* libLocalWebDataKit.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		40292F6B13FDBCDA008EE328 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = 40292F6E13FDBCDA008EE328 /* Build configuration list for PBXProject "LocalWebDataKit" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 40292F6913FDBCDA008EE328;
+			productRefGroup = 40292F7513FDBCDA008EE328 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				40292F7313FDBCDA008EE328 /* LocalWebDataKit */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		40292F7013FDBCDA008EE328 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				40292F7E13FDBCDA008EE328 /* LocalWebDataKit.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		40292F7F13FDBCDA008EE328 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		40292F8013FDBCDA008EE328 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		40292F8213FDBCDA008EE328 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/LocalWebDataKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LocalWebDataKit/LocalWebDataKit-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		40292F8313FDBCDA008EE328 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DSTROOT = /tmp/LocalWebDataKit.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "LocalWebDataKit/LocalWebDataKit-Prefix.pch";
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		40292F6E13FDBCDA008EE328 /* Build configuration list for PBXProject "LocalWebDataKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40292F7F13FDBCDA008EE328 /* Debug */,
+				40292F8013FDBCDA008EE328 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		40292F8113FDBCDA008EE328 /* Build configuration list for PBXNativeTarget "LocalWebDataKit" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				40292F8213FDBCDA008EE328 /* Debug */,
+				40292F8313FDBCDA008EE328 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 40292F6B13FDBCDA008EE328 /* Project object */;
+}

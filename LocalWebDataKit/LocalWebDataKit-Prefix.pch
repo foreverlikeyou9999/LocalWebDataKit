@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'LocalWebDataKit' target in the 'LocalWebDataKit' project
+//
+
+#ifdef __OBJC__
+    #import <Foundation/Foundation.h>
+#endif
