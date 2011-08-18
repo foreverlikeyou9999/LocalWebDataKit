@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		40292F7813FDBCDA008EE328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40292F7713FDBCDA008EE328 /* Foundation.framework */; };
-		40292F7E13FDBCDA008EE328 /* LocalWebDataKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 40292F7D13FDBCDA008EE328 /* LocalWebDataKit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,7 +15,6 @@
 		40292F7713FDBCDA008EE328 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		40292F7B13FDBCDA008EE328 /* LocalWebDataKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LocalWebDataKit-Prefix.pch"; path = "../LocalWebDataKit-Prefix.pch"; sourceTree = "<group>"; };
 		40292F7C13FDBCDA008EE328 /* LocalWebDataKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocalWebDataKit.h; sourceTree = "<group>"; };
-		40292F7D13FDBCDA008EE328 /* LocalWebDataKit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocalWebDataKit.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +58,6 @@
 			isa = PBXGroup;
 			children = (
 				40292F7C13FDBCDA008EE328 /* LocalWebDataKit.h */,
-				40292F7D13FDBCDA008EE328 /* LocalWebDataKit.m */,
 				40292F7A13FDBCDA008EE328 /* Supporting Files */,
 			);
 			path = LocalWebDataKit;
@@ -131,7 +128,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				40292F7E13FDBCDA008EE328 /* LocalWebDataKit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
