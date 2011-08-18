@@ -103,7 +103,9 @@
 
 - (void)copySeedData
 {
-    
+    if(!self.seedDataPath) {
+        return;
+    }
 }
 
 - (void)beginSyncSession
