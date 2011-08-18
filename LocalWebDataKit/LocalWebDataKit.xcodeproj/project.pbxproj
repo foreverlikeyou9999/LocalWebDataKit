@@ -7,10 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4004E4FF13FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.h in Headers */ = {isa = PBXBuildFile; fileRef = 4004E4FD13FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.h */; };
+		4004E50013FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4004E4FE13FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.m */; };
 		40292F7813FDBCDA008EE328 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 40292F7713FDBCDA008EE328 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4004E4FD13FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LWDKLocalWebDataSyncManager.h; sourceTree = "<group>"; };
+		4004E4FE13FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LWDKLocalWebDataSyncManager.m; sourceTree = "<group>"; };
 		40292F7413FDBCDA008EE328 /* libLocalWebDataKit.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libLocalWebDataKit.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		40292F7713FDBCDA008EE328 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		40292F7B13FDBCDA008EE328 /* LocalWebDataKit-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "LocalWebDataKit-Prefix.pch"; path = "../LocalWebDataKit-Prefix.pch"; sourceTree = "<group>"; };
@@ -58,6 +62,8 @@
 			isa = PBXGroup;
 			children = (
 				40292F7C13FDBCDA008EE328 /* LocalWebDataKit.h */,
+				4004E4FD13FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.h */,
+				4004E4FE13FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.m */,
 				40292F7A13FDBCDA008EE328 /* Supporting Files */,
 			);
 			path = LocalWebDataKit;
@@ -78,6 +84,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4004E4FF13FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,6 +135,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4004E50013FDC3F9002A97B8 /* LWDKLocalWebDataSyncManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
