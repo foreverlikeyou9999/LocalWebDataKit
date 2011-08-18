@@ -9,6 +9,15 @@
 #import <Foundation/Foundation.h>
 
 @interface LWDKLocalWebDataSyncManager : NSObject
+{
+    NSString *seedDataPath;
+    NSString *storedDataPath;
+    NSURL *remoteManifestURL;
+    NSTimeInterval refreshInterval;
+    
+    NSTimer *refreshTimer;
+}
+
 + (LWDKLocalWebDataSyncManager *)sharedLocalWebDataSyncManager;
 
 - (void)beginSyncingWithSeedDataPath:(NSString *)theSeedDataPath
