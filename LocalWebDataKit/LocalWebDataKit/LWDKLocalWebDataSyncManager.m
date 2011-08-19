@@ -43,7 +43,7 @@
     return seedDataPath;
 }
 
-- (void)setSeetDataPath:(NSString *)theSeedDataPath
+- (void)setSeedDataPath:(NSString *)theSeedDataPath
 {
     if(seedDataPath != theSeedDataPath) {
         [seedDataPath release];
@@ -106,6 +106,8 @@
     if(!self.seedDataPath) {
         return;
     }
+    
+    NSLog(@"Copy from %@ to %@", self.seedDataPath, self.storedDataPath);
 }
 
 - (void)beginSyncSession

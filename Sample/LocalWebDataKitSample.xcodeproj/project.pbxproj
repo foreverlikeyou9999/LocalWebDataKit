@@ -14,6 +14,7 @@
 		4017B9A913FDBE8B008C12B1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017B9A813FDBE8B008C12B1 /* main.m */; };
 		4017B9AD13FDBE8B008C12B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017B9AC13FDBE8B008C12B1 /* AppDelegate.m */; };
 		4017B9B013FDBE8B008C12B1 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4017B9AE13FDBE8B008C12B1 /* MainWindow.xib */; };
+		4019390D13FEC5AE00083F39 /* LWDKManifest.m in Sources */ = {isa = PBXBuildFile; fileRef = 4019390C13FEC5AE00083F39 /* LWDKManifest.m */; };
 		4044C99913FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4044C99813FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m */; };
 		40A10ED313FEBAA5002DE6FA /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A10ED213FEBAA5002DE6FA /* ContentViewController.m */; };
 		40A10ED613FEBAC7002DE6FA /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40A10ED513FEBAC7002DE6FA /* ContentViewController.xib */; };
@@ -33,6 +34,8 @@
 		4017B9AB13FDBE8B008C12B1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4017B9AC13FDBE8B008C12B1 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		4017B9AF13FDBE8B008C12B1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
+		4019390B13FEC5AE00083F39 /* LWDKManifest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LWDKManifest.h; path = ../../LocalWebDataKit/LocalWebDataKit/LWDKManifest.h; sourceTree = "<group>"; };
+		4019390C13FEC5AE00083F39 /* LWDKManifest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LWDKManifest.m; path = ../../LocalWebDataKit/LocalWebDataKit/LWDKManifest.m; sourceTree = "<group>"; };
 		4044C99613FDCFA6007E0D1E /* LocalWebDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalWebDataKit.h; path = ../../LocalWebDataKit/LocalWebDataKit/LocalWebDataKit.h; sourceTree = "<group>"; };
 		4044C99713FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LWDKLocalWebDataSyncManager.h; path = ../../LocalWebDataKit/LocalWebDataKit/LWDKLocalWebDataSyncManager.h; sourceTree = "<group>"; };
 		4044C99813FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LWDKLocalWebDataSyncManager.m; path = ../../LocalWebDataKit/LocalWebDataKit/LWDKLocalWebDataSyncManager.m; sourceTree = "<group>"; };
@@ -120,6 +123,8 @@
 				4044C99613FDCFA6007E0D1E /* LocalWebDataKit.h */,
 				4044C99713FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.h */,
 				4044C99813FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m */,
+				4019390B13FEC5AE00083F39 /* LWDKManifest.h */,
+				4019390C13FEC5AE00083F39 /* LWDKManifest.m */,
 			);
 			name = LocalWebDataKit;
 			sourceTree = "<group>";
@@ -190,6 +195,7 @@
 				4044C99913FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m in Sources */,
 				40A10ED313FEBAA5002DE6FA /* ContentViewController.m in Sources */,
 				40A10ED913FEBECA002DE6FA /* ContentViewData.m in Sources */,
+				4019390D13FEC5AE00083F39 /* LWDKManifest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
