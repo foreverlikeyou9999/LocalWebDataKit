@@ -7,6 +7,7 @@
 //
 
 #import "ContentViewData.h"
+#import "LWDKLocalWebDataSyncManager.h"
 
 @interface ContentViewData (Private)
 - (NSString *)pathToContent:(NSString *)content;
@@ -25,6 +26,11 @@
     if (self) {
         [self loadImage];
         [self loadText];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(filesSynced:)
+                                                     name:LWDKLocalWebDataSyncManagerFinishedSyncNotification
+                                                   object:[LWDKLocalWebDataSyncManager sharedLocalWebDataSyncManager]];
     }
     
     return self;
@@ -35,7 +41,26 @@
     [image release];
     [text release];
     
+    [[NSNotificationCenter defaultCenter] removeObserver:self
+                                                    name:LWDKLocalWebDataSyncManagerFinishedSyncNotification
+                                                  object:[LWDKLocalWebDataSyncManager sharedLocalWebDataSyncManager]];
+    
     [super dealloc];
+}
+
+#pragma mark -
+#pragma mark Notifications
+- (void)filesSynced:(NSNotification *)notification
+{
+    NSArray *touchedFiles = [[notification userInfo] objectForKey:LWDKTouchedFilesKey];
+    
+    if([touchedFiles containsObject:@"Images/icon.png"]) {
+        [self loadImage];
+    }
+    
+    if([touchedFiles containsObject:@"text.txt"]) {
+        [self loadText];
+    }
 }
 
 #pragma mark -
