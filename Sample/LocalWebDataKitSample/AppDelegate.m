@@ -32,7 +32,7 @@
     
     [[LWDKLocalWebDataSyncManager sharedLocalWebDataSyncManager] beginSyncingWithSeedDataPath:[self resourceContentPath]
                                                                                storedDataPath:[self storedContentPath]
-                                                                            remoteManifestURL:nil
+                                                                            remoteManifestURL:[NSURL URLWithString:@"http://enderlabs.com/static/lwdk/manifest.plist"]
                                                                               refreshInterval:60 * 60];
     
     contentViewController = [[ContentViewController alloc] init];
