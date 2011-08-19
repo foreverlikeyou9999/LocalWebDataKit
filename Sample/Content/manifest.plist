@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Files</key>
+	<array>
+		<dict>
+			<key>FileName</key>
+			<string>text.txt</string>
+			<key>ModifiedDate</key>
+			<date>2011-08-19T15:33:06Z</date>
+		</dict>
+		<dict>
+			<key>FileName</key>
+			<string>Images/icon.png</string>
+			<key>ModifiedDate</key>
+			<date>2011-08-19T15:35:34Z</date>
+		</dict>
+	</array>
+</dict>
+</plist>

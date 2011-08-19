@@ -15,6 +15,7 @@
 		4017B9AD13FDBE8B008C12B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017B9AC13FDBE8B008C12B1 /* AppDelegate.m */; };
 		4017B9B013FDBE8B008C12B1 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4017B9AE13FDBE8B008C12B1 /* MainWindow.xib */; };
 		4044C99913FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4044C99813FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m */; };
+		40F068BF13FEB89300B7EA47 /* Content in Resources */ = {isa = PBXBuildFile; fileRef = 40F068BE13FEB89300B7EA47 /* Content */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		4044C99613FDCFA6007E0D1E /* LocalWebDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalWebDataKit.h; path = ../../LocalWebDataKit/LocalWebDataKit/LocalWebDataKit.h; sourceTree = "<group>"; };
 		4044C99713FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LWDKLocalWebDataSyncManager.h; path = ../../LocalWebDataKit/LocalWebDataKit/LWDKLocalWebDataSyncManager.h; sourceTree = "<group>"; };
 		4044C99813FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LWDKLocalWebDataSyncManager.m; path = ../../LocalWebDataKit/LocalWebDataKit/LWDKLocalWebDataSyncManager.m; sourceTree = "<group>"; };
+		40F068BE13FEB89300B7EA47 /* Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Content; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		4017B9A313FDBE8B008C12B1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				40F068BE13FEB89300B7EA47 /* Content */,
 				4017B9A413FDBE8B008C12B1 /* LocalWebDataKitSample-Info.plist */,
 				4017B9A513FDBE8B008C12B1 /* InfoPlist.strings */,
 				4017B9A813FDBE8B008C12B1 /* main.m */,
@@ -157,6 +160,7 @@
 			files = (
 				4017B9A713FDBE8B008C12B1 /* InfoPlist.strings in Resources */,
 				4017B9B013FDBE8B008C12B1 /* MainWindow.xib in Resources */,
+				40F068BF13FEB89300B7EA47 /* Content in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
