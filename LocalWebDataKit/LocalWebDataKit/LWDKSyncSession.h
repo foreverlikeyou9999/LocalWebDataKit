@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "ELDownload.h"
+#import "LWDKManifest.h"
 
 @interface LWDKSyncSession : NSObject
 {
@@ -17,6 +18,10 @@
     
     NSString *downloadURL;
     ELDownload *download;
+    
+    NSArray *addedFiles;
+    NSArray *modifiedFiles;
+    NSArray *removedFiles;
 }
 
 + (LWDKSyncSession *)syncSessionWithDataPath:(NSString *)theDataPath

@@ -18,4 +18,8 @@
 
 + (LWDKManifest *)manifestWithPListData:(NSData *)data;
 - (id)initWithPListData:(NSData *)data;
+
+- (NSArray *)filesAddedSinceManifest:(LWDKManifest *)manifest;
+- (NSArray *)filesModifiedSinceManifest:(LWDKManifest *)manifest;
+- (NSArray *)filesRemovedSinceManifest:(LWDKManifest *)manifest;
 @end
