@@ -13,6 +13,8 @@
     NSArray *files;
 }
 
+@property (nonatomic, readonly) NSArray *files;
+
 + (LWDKManifest *)manifestWithPListData:(NSData *)data;
 - (id)initWithPListData:(NSData *)data;
 @end
