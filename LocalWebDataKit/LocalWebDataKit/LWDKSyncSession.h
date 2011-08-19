@@ -7,12 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "ELDownload.h"
 
 @interface LWDKSyncSession : NSObject
 {
     NSString *dataPath;
     NSURL *remoteManifestURL;
     id delegate;
+    
+    NSString *downloadURL;
+    ELDownload *download;
 }
 
 + (LWDKSyncSession *)syncSessionWithDataPath:(NSString *)theDataPath
@@ -23,4 +27,8 @@
               delegate:(id)theDelegate;
 
 - (void)cancelSyncSession;
+@end
+
+@protocol LWDKSyncSessionDelegate
+- (void)syncSessionFailedToDownloadFile:(NSString *)file;
 @end

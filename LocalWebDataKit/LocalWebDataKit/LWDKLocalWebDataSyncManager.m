@@ -200,4 +200,9 @@
     [self beginSyncSession];
 }
 
+- (void)syncSessionFailedToDownloadFile:(NSString *)file
+{
+    NSLog(@"Oh noes! Failed to download %@", file);
+}
+
 @end

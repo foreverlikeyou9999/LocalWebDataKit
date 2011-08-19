@@ -8,6 +8,13 @@
 
 #import "LWDKSyncSession.h"
 
+@interface LWDKSyncSession (Private)
+- (void)cancelCurrentDownload;
+- (void)downloadFile:(NSString *)fileURL;
+
+- (void)downloadManifest;
+@end
+
 @implementation LWDKSyncSession
 
 + (LWDKSyncSession *)syncSessionWithDataPath:(NSString *)theDataPath
@@ -27,13 +34,14 @@
         remoteManifestURL = [theRemoteManifestURL copy];
         delegate = theDelegate;
         
-        NSLog(@"The delegate is %@", delegate);
+        [self downloadManifest];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    [self cancelCurrentDownload];
     [dataPath release];
     [remoteManifestURL release];
     
@@ -42,7 +50,46 @@
 
 - (void)cancelSyncSession
 {
+    [self cancelCurrentDownload];
+}
+
+#pragma mark -
+#pragma mark Private
+- (void)cancelCurrentDownload
+{
+    [download cancel];
+    [download release];
+    download = nil;
     
+    [downloadURL release];
+    downloadURL = nil;
+}
+
+- (void)downloadFile:(NSString *)fileURL
+{
+    [self cancelCurrentDownload];
+    
+    downloadURL = [fileURL copy];
+    download = [[ELDownload downloadWithURL:fileURL delegate:self] retain];
+}
+
+- (void)downloadManifest
+{
+    [self downloadFile:[remoteManifestURL absoluteString]];
+}
+
+#pragma mark -
+#pragma mark Callbacks
+- (void)download:(ELDownload *)theDownload downloadedData:(NSData *)data
+{
+    NSLog(@"%@", [NSPropertyListSerialization propertyListFromData:data mutabilityOption:NSPropertyListImmutable format:0 errorDescription:0]);
+}
+
+- (void)downloadFailed:(ELDownload *)theDownload
+{
+    [delegate syncSessionFailedToDownloadFile:downloadURL];
+    
+    [self cancelSyncSession];
 }
 
 @end
