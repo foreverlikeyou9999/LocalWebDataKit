@@ -9,5 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface LWDKManifest : NSObject
+{
+    NSArray *files;
+}
 
++ (LWDKManifest *)manifestWithPListData:(NSData *)data;
+- (id)initWithPListData:(NSData *)data;
 @end
