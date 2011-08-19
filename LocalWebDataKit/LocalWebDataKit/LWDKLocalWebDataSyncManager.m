@@ -11,6 +11,15 @@
 
 NSString *LWDKLocalWebDataSyncManagerStartedDownloadingContentNotification = @"LWDKLocalWebDataSyncManagerStartedDownloadingContentNotification";
 NSString *LWDKLocalWebDataSyncManagerStoppedDownloadingContentNotification = @"LWDKLocalWebDataSyncManagerStoppedDownloadingContentNotification";
+NSString *LWDKLocalWebDataSyncManagerFinishedSyncNotification = @"LWDKLocalWebDataSyncManagerFinishedSyncNotification";
+NSString *LWDKLocalWebDataSyncManagerSyncFailedNotification = @"LWDKLocalWebDataSyncManagerSyncFailedNotification";
+
+NSString *LWDKTouchedFilesKey = @"LWDKTouchedFilesKey";
+NSString *LWDKSyncFailureReasonKey = @"LWDKSyncFailureReasonKey";
+NSString *LWDKSyncFailedURLKey = @"LWDKSyncFailedURLKey";
+
+NSString *LWDKFailureReasonInconsistentSyncState = @"LWDKFailureReasonInconsistentSyncState";
+NSString *LWDKFailureReasonUnableToDownloadFile = @"LWDKFailureReasonUnableToDownloadFile";
 
 @interface LWDKLocalWebDataSyncManager (Private)
 @property (nonatomic, copy) NSString *seedDataPath;
@@ -215,7 +224,9 @@ NSString *LWDKLocalWebDataSyncManagerStoppedDownloadingContentNotification = @"L
 
 - (void)syncSessionCommittedFiles:(NSArray *)fileNames
 {
-    NSLog(@"Commitment! %@", fileNames);
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:fileNames forKey:LWDKTouchedFilesKey];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:LWDKLocalWebDataSyncManagerFinishedSyncNotification object:self userInfo:userInfo];
     
     [syncSession release];
     syncSession = nil;
@@ -223,7 +234,11 @@ NSString *LWDKLocalWebDataSyncManagerStoppedDownloadingContentNotification = @"L
 
 - (void)syncSessionInconsistentStateFailure
 {
-    NSLog(@"Inconsistent state failure!");
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                              LWDKFailureReasonInconsistentSyncState, LWDKSyncFailureReasonKey,
+                              nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:LWDKLocalWebDataSyncManagerSyncFailedNotification object:self userInfo:userInfo];
     
     [syncSession release];
     syncSession = nil;
@@ -231,7 +246,12 @@ NSString *LWDKLocalWebDataSyncManagerStoppedDownloadingContentNotification = @"L
 
 - (void)syncSessionFailedToDownloadFile:(NSString *)file
 {
-    NSLog(@"Oh noes! Failed to download %@", file);
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObjectsAndKeys:
+                              LWDKFailureReasonUnableToDownloadFile, LWDKSyncFailureReasonKey,
+                              file, LWDKSyncFailedURLKey,
+                              nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:LWDKLocalWebDataSyncManagerSyncFailedNotification object:self userInfo:userInfo];
     
     [syncSession release];
     syncSession = nil;

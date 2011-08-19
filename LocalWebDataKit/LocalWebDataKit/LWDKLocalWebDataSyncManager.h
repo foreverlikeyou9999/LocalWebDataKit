@@ -11,6 +11,15 @@
 
 extern NSString *LWDKLocalWebDataSyncManagerStartedDownloadingContentNotification;
 extern NSString *LWDKLocalWebDataSyncManagerStoppedDownloadingContentNotification;
+extern NSString *LWDKLocalWebDataSyncManagerFinishedSyncNotification;
+extern NSString *LWDKLocalWebDataSyncManagerSyncFailedNotification;
+
+extern NSString *LWDKTouchedFilesKey;
+extern NSString *LWDKSyncFailureReasonKey;
+extern NSString *LWDKSyncFailedURLKey;
+
+extern NSString *LWDKFailureReasonInconsistentSyncState;
+extern NSString *LWDKFailureReasonUnableToDownloadFile;
 
 @interface LWDKLocalWebDataSyncManager : NSObject
 {
