@@ -7,8 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ContentViewController.h"
 
 @interface AppDelegate : NSObject <UIApplicationDelegate>
+{
+    ContentViewController *contentViewController;
+}
 
 @property (nonatomic, retain) IBOutlet UIWindow *window;
 

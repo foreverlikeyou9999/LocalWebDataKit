@@ -14,7 +14,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    contentViewController = [[ContentViewController alloc] init];
+    
+    [self.window addSubview:contentViewController.view];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

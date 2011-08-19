@@ -15,6 +15,9 @@
 		4017B9AD13FDBE8B008C12B1 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4017B9AC13FDBE8B008C12B1 /* AppDelegate.m */; };
 		4017B9B013FDBE8B008C12B1 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4017B9AE13FDBE8B008C12B1 /* MainWindow.xib */; };
 		4044C99913FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4044C99813FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m */; };
+		40A10ED313FEBAA5002DE6FA /* ContentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A10ED213FEBAA5002DE6FA /* ContentViewController.m */; };
+		40A10ED613FEBAC7002DE6FA /* ContentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 40A10ED513FEBAC7002DE6FA /* ContentViewController.xib */; };
+		40A10ED913FEBECA002DE6FA /* ContentViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = 40A10ED813FEBECA002DE6FA /* ContentViewData.m */; };
 		40F068BF13FEB89300B7EA47 /* Content in Resources */ = {isa = PBXBuildFile; fileRef = 40F068BE13FEB89300B7EA47 /* Content */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +36,11 @@
 		4044C99613FDCFA6007E0D1E /* LocalWebDataKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalWebDataKit.h; path = ../../LocalWebDataKit/LocalWebDataKit/LocalWebDataKit.h; sourceTree = "<group>"; };
 		4044C99713FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LWDKLocalWebDataSyncManager.h; path = ../../LocalWebDataKit/LocalWebDataKit/LWDKLocalWebDataSyncManager.h; sourceTree = "<group>"; };
 		4044C99813FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LWDKLocalWebDataSyncManager.m; path = ../../LocalWebDataKit/LocalWebDataKit/LWDKLocalWebDataSyncManager.m; sourceTree = "<group>"; };
+		40A10ED113FEBAA5002DE6FA /* ContentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewController.h; sourceTree = "<group>"; };
+		40A10ED213FEBAA5002DE6FA /* ContentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewController.m; sourceTree = "<group>"; };
+		40A10ED513FEBAC7002DE6FA /* ContentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContentViewController.xib; sourceTree = "<group>"; };
+		40A10ED713FEBECA002DE6FA /* ContentViewData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContentViewData.h; sourceTree = "<group>"; };
+		40A10ED813FEBECA002DE6FA /* ContentViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ContentViewData.m; sourceTree = "<group>"; };
 		40F068BE13FEB89300B7EA47 /* Content */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Content; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -81,6 +89,11 @@
 			isa = PBXGroup;
 			children = (
 				4044C99413FDCF8F007E0D1E /* LocalWebDataKit */,
+				40A10ED713FEBECA002DE6FA /* ContentViewData.h */,
+				40A10ED813FEBECA002DE6FA /* ContentViewData.m */,
+				40A10ED113FEBAA5002DE6FA /* ContentViewController.h */,
+				40A10ED213FEBAA5002DE6FA /* ContentViewController.m */,
+				40A10ED513FEBAC7002DE6FA /* ContentViewController.xib */,
 				4017B9AB13FDBE8B008C12B1 /* AppDelegate.h */,
 				4017B9AC13FDBE8B008C12B1 /* AppDelegate.m */,
 				4017B9AE13FDBE8B008C12B1 /* MainWindow.xib */,
@@ -161,6 +174,7 @@
 				4017B9A713FDBE8B008C12B1 /* InfoPlist.strings in Resources */,
 				4017B9B013FDBE8B008C12B1 /* MainWindow.xib in Resources */,
 				40F068BF13FEB89300B7EA47 /* Content in Resources */,
+				40A10ED613FEBAC7002DE6FA /* ContentViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -174,6 +188,8 @@
 				4017B9A913FDBE8B008C12B1 /* main.m in Sources */,
 				4017B9AD13FDBE8B008C12B1 /* AppDelegate.m in Sources */,
 				4044C99913FDCFA6007E0D1E /* LWDKLocalWebDataSyncManager.m in Sources */,
+				40A10ED313FEBAA5002DE6FA /* ContentViewController.m in Sources */,
+				40A10ED913FEBECA002DE6FA /* ContentViewData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
