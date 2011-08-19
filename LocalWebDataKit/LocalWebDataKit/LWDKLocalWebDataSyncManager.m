@@ -135,7 +135,11 @@
 
 - (void)beginSyncSession
 {
+    if(syncSession) {
+        return;
+    }
     
+    syncSession = [[LWDKSyncSession syncSessionWithDataPath:self.storedDataPath remoteManifestURL:self.remoteManifestURL delegate:self] retain];
 }
 
 - (void)clearRefreshTimer
@@ -183,6 +187,10 @@
 - (void)stopSyncing
 {
     [self clearRefreshTimer];
+    
+    [syncSession cancelSyncSession];
+    [syncSession release];
+    syncSession = nil;
 }
 
 #pragma mark -

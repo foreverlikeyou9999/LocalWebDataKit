@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LWDKSyncSession.h"
 
 @interface LWDKLocalWebDataSyncManager : NSObject
 {
@@ -14,6 +15,8 @@
     NSString *storedDataPath;
     NSURL *remoteManifestURL;
     NSTimeInterval refreshInterval;
+    
+    LWDKSyncSession *syncSession;
     
     NSTimer *refreshTimer;
 }

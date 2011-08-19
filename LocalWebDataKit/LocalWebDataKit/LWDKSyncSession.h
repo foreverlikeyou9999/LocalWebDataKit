@@ -9,5 +9,18 @@
 #import <Foundation/Foundation.h>
 
 @interface LWDKSyncSession : NSObject
+{
+    NSString *dataPath;
+    NSURL *remoteManifestURL;
+    id delegate;
+}
 
++ (LWDKSyncSession *)syncSessionWithDataPath:(NSString *)theDataPath
+                           remoteManifestURL:(NSURL *)theRemoteManifestURL
+                                    delegate:(id)theDelegate;
+- (id)initWithDataPath:(NSString *)theDataPath
+     remoteManifestURL:(NSURL *)theRemoteManifestURL
+              delegate:(id)theDelegate;
+
+- (void)cancelSyncSession;
 @end
