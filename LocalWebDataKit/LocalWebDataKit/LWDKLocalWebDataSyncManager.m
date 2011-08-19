@@ -200,9 +200,10 @@
     [self beginSyncSession];
 }
 
-- (void)syncSessionCommittedFiles
+- (void)syncSessionCommittedFiles:(NSArray *)fileNames
 {
-    NSLog(@"Commitment!");
+    NSLog(@"Commitment! %@", fileNames);
+    
     [syncSession release];
     syncSession = nil;
 }

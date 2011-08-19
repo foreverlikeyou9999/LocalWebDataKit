@@ -199,6 +199,8 @@
     NSString *temporaryDirectory = [self temporaryDirectory];
     NSString *syncManifestPath = [temporaryDirectory stringByAppendingPathComponent:@"manifest.plist"];
     
+    NSMutableArray *touchedFiles = [NSMutableArray array];
+    
     // Move added files
     for(LWDKManifestFile *file in addedFiles) {
         NSString *syncPath = [temporaryDirectory stringByAppendingPathComponent:file.fileName];
@@ -207,6 +209,8 @@
         [[NSFileManager defaultManager] createDirectoryAtPath:storedDirectory withIntermediateDirectories:YES attributes:nil error:0];
         [[NSFileManager defaultManager] removeItemAtPath:storedPath error:0];
         [[NSFileManager defaultManager] moveItemAtPath:syncPath toPath:storedPath error:0];
+        
+        [touchedFiles addObject:file.fileName];
     }
     
     // Move updated files
@@ -215,20 +219,25 @@
         NSString *storedPath = [dataPath stringByAppendingPathComponent:file.fileName];
         [[NSFileManager defaultManager] removeItemAtPath:storedPath error:0];
         [[NSFileManager defaultManager] moveItemAtPath:syncPath toPath:storedPath error:0];
+        
+        [touchedFiles addObject:file.fileName];
     }
     
     // Move manifest
+    [[NSFileManager defaultManager] removeItemAtPath:[self storedManifestPath] error:0];
     [[NSFileManager defaultManager] moveItemAtPath:syncManifestPath toPath:[self storedManifestPath] error:0];
     
     // Delete removed files
     for(LWDKManifestFile *file in removedFiles) {
         NSString *storedPath = [dataPath stringByAppendingPathComponent:file.fileName];
         [[NSFileManager defaultManager] removeItemAtPath:storedPath error:nil];
+        
+        [touchedFiles addObject:file.fileName];
     }
     
     [self removeTemporaryDirectory];
     
-    [delegate syncSessionCommittedFiles];
+    [delegate syncSessionCommittedFiles:[NSArray arrayWithArray:touchedFiles]];
 }
 
 - (BOOL)allExpectedFilesArePresent
