@@ -22,6 +22,8 @@
     NSArray *addedFiles;
     NSArray *modifiedFiles;
     NSArray *removedFiles;
+    
+    NSMutableArray *downloadList;
 }
 
 + (LWDKSyncSession *)syncSessionWithDataPath:(NSString *)theDataPath

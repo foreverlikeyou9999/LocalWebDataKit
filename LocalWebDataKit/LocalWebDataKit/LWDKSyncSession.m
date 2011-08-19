@@ -19,6 +19,9 @@
 - (void)writeData:(NSData *)data toContentPath:(NSString *)path;
 
 - (void)prepareDeltasWithSyncManifest:(LWDKManifest *)syncManifest;
+- (void)buildDownloadList;
+- (void)downloadNextFile;
+- (void)downloadedAllFiles;
 @end
 
 @implementation LWDKSyncSession
@@ -54,6 +57,8 @@
     [addedFiles release];
     [modifiedFiles release];
     [removedFiles release];
+    
+    [downloadList release];
     
     [super dealloc];
 }
@@ -117,9 +122,11 @@
 - (void)writeData:(NSData *)data toContentPath:(NSString *)path
 {
     NSString *temporaryDirectory = [self temporaryDirectory];
-    [[NSFileManager defaultManager] createDirectoryAtPath:temporaryDirectory withIntermediateDirectories:YES attributes:nil error:0];
-    
     NSString *filePath = [temporaryDirectory stringByAppendingPathComponent:path];
+    NSString *fileDirectory = [filePath stringByDeletingLastPathComponent];
+    
+    [[NSFileManager defaultManager] createDirectoryAtPath:fileDirectory withIntermediateDirectories:YES attributes:nil error:0];
+    
     [data writeToFile:filePath atomically:YES];
 }
 
@@ -141,6 +148,43 @@
     removedFiles = [[syncManifest filesRemovedSinceManifest:currentManifest] retain];
 }
 
+- (void)buildDownloadList
+{
+    if(!downloadList) {
+        downloadList = [[NSMutableArray alloc] init];
+    }
+    
+    [downloadList removeAllObjects];
+    
+    for(LWDKManifestFile *file in addedFiles) {
+        [downloadList addObject:file];
+    }
+    
+    for(LWDKManifestFile *file in modifiedFiles) {
+        [downloadList addObject:file];
+    }
+}
+
+- (void)downloadNextFile
+{
+    if(downloadList.count == 0) {
+        [self downloadedAllFiles];
+        return;
+    }
+    
+    LWDKManifestFile *nextFile = [downloadList objectAtIndex:0];
+    
+    NSString *manifestURLString = [remoteManifestURL absoluteString];
+    NSString *remoteContentFolder = [manifestURLString stringByDeletingLastPathComponent];
+    NSString *nextFileURL = [remoteContentFolder stringByAppendingPathComponent:nextFile.fileName];
+    [self downloadFile:nextFileURL];
+}
+
+- (void)downloadedAllFiles
+{
+    NSLog(@"Finished downloading to %@!", [self temporaryDirectory]);
+}
+
 #pragma mark -
 #pragma mark Callbacks
 - (void)download:(ELDownload *)theDownload downloadedData:(NSData *)data
@@ -150,8 +194,15 @@
         
         LWDKManifest *syncManifest = [LWDKManifest manifestWithPListData:data];
         [self prepareDeltasWithSyncManifest:syncManifest];
+        [self buildDownloadList];
+        
+        [self downloadNextFile];
     } else {
-        NSLog(@"Downloaded a data file");
+        LWDKManifestFile *currentFile = [downloadList objectAtIndex:0];
+        [self writeData:data toContentPath:currentFile.fileName];
+        
+        [downloadList removeObjectAtIndex:0];
+        [self downloadNextFile];
     }
 }
 
