@@ -22,6 +22,9 @@
 - (void)buildDownloadList;
 - (void)downloadNextFile;
 - (void)downloadedAllFiles;
+- (void)commitDownloadedFiles;
+
+- (BOOL)allExpectedFilesArePresent;
 @end
 
 @implementation LWDKSyncSession
@@ -98,11 +101,9 @@
     NSDirectoryEnumerator *enumerator = [[NSFileManager defaultManager] enumeratorAtPath:temporaryDirectory];
     
     for(NSString *path = [enumerator nextObject]; path != nil; path = [enumerator nextObject]) {
-        NSLog(@"Deleting %@", path);
         [[NSFileManager defaultManager] removeItemAtPath:path error:0];
     }
     
-    NSLog(@"Deleting %@", temporaryDirectory);
     [[NSFileManager defaultManager] removeItemAtPath:temporaryDirectory error:0];
 }
 
@@ -146,6 +147,8 @@
     addedFiles = [[syncManifest filesAddedSinceManifest:currentManifest] retain];
     modifiedFiles = [[syncManifest filesModifiedSinceManifest:currentManifest] retain];
     removedFiles = [[syncManifest filesRemovedSinceManifest:currentManifest] retain];
+    
+    //NSLog(@"%i added files, %i modified files, %i removed files", addedFiles.count, modifiedFiles.count, removedFiles.count);
 }
 
 - (void)buildDownloadList
@@ -182,7 +185,66 @@
 
 - (void)downloadedAllFiles
 {
-    NSLog(@"Finished downloading to %@!", [self temporaryDirectory]);
+    if(![self allExpectedFilesArePresent]) {
+        [self cancelSyncSession];
+        [delegate syncSessionInconsistentStateFailure];
+        return;
+    }
+    
+    [self commitDownloadedFiles];
+}
+
+- (void)commitDownloadedFiles
+{
+    NSString *temporaryDirectory = [self temporaryDirectory];
+    NSString *syncManifestPath = [temporaryDirectory stringByAppendingPathComponent:@"manifest.plist"];
+    
+    // Move added files
+    for(LWDKManifestFile *file in addedFiles) {
+        NSString *syncPath = [temporaryDirectory stringByAppendingPathComponent:file.fileName];
+        NSString *storedPath = [dataPath stringByAppendingPathComponent:file.fileName];
+        NSString *storedDirectory = [storedPath stringByDeletingLastPathComponent];
+        [[NSFileManager defaultManager] createDirectoryAtPath:storedDirectory withIntermediateDirectories:YES attributes:nil error:0];
+        [[NSFileManager defaultManager] removeItemAtPath:storedPath error:0];
+        [[NSFileManager defaultManager] moveItemAtPath:syncPath toPath:storedPath error:0];
+    }
+    
+    // Move updated files
+    for(LWDKManifestFile *file in modifiedFiles) {
+        NSString *syncPath = [temporaryDirectory stringByAppendingPathComponent:file.fileName];
+        NSString *storedPath = [dataPath stringByAppendingPathComponent:file.fileName];
+        [[NSFileManager defaultManager] removeItemAtPath:storedPath error:0];
+        [[NSFileManager defaultManager] moveItemAtPath:syncPath toPath:storedPath error:0];
+    }
+    
+    // Move manifest
+    [[NSFileManager defaultManager] moveItemAtPath:syncManifestPath toPath:[self storedManifestPath] error:0];
+    
+    // Delete removed files
+    for(LWDKManifestFile *file in removedFiles) {
+        NSString *storedPath = [dataPath stringByAppendingPathComponent:file.fileName];
+        [[NSFileManager defaultManager] removeItemAtPath:storedPath error:nil];
+    }
+    
+    [self removeTemporaryDirectory];
+    
+    [delegate syncSessionCommittedFiles];
+}
+
+- (BOOL)allExpectedFilesArePresent
+{
+    NSString *temporaryDirectory = [self temporaryDirectory];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:[temporaryDirectory stringByAppendingPathComponent:@"manifest.plist"]]) {
+        return NO;
+    }
+    
+    for(LWDKManifestFile *file in addedFiles) {
+        if(![[NSFileManager defaultManager] fileExistsAtPath:[temporaryDirectory stringByAppendingPathComponent:file.fileName]]) {
+            return NO;
+        }
+    }
+    
+    return YES;
 }
 
 #pragma mark -
@@ -208,9 +270,12 @@
 
 - (void)downloadFailed:(ELDownload *)theDownload
 {
-    [delegate syncSessionFailedToDownloadFile:downloadURL];
+    NSString *theDownloadURL = [downloadURL copy];
     
     [self cancelSyncSession];
+    [delegate syncSessionFailedToDownloadFile:theDownloadURL];
+    
+    [theDownloadURL release];
 }
 
 @end

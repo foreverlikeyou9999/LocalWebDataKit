@@ -200,9 +200,27 @@
     [self beginSyncSession];
 }
 
+- (void)syncSessionCommittedFiles
+{
+    NSLog(@"Commitment!");
+    [syncSession release];
+    syncSession = nil;
+}
+
+- (void)syncSessionInconsistentStateFailure
+{
+    NSLog(@"Inconsistent state failure!");
+    
+    [syncSession release];
+    syncSession = nil;
+}
+
 - (void)syncSessionFailedToDownloadFile:(NSString *)file
 {
     NSLog(@"Oh noes! Failed to download %@", file);
+    
+    [syncSession release];
+    syncSession = nil;
 }
 
 @end
