@@ -37,6 +37,8 @@
 @end
 
 @protocol LWDKSyncSessionDelegate
+- (void)syncSessionStartedDownload;
+- (void)syncSessionFinishedDownload;
 - (void)syncSessionCommittedFiles:(NSArray *)fileNames;
 - (void)syncSessionInconsistentStateFailure;
 - (void)syncSessionFailedToDownloadFile:(NSString *)file;

@@ -9,6 +9,9 @@
 #import <Foundation/Foundation.h>
 #import "LWDKSyncSession.h"
 
+extern NSString *LWDKLocalWebDataSyncManagerStartedDownloadingContentNotification;
+extern NSString *LWDKLocalWebDataSyncManagerStoppedDownloadingContentNotification;
+
 @interface LWDKLocalWebDataSyncManager : NSObject
 {
     NSString *seedDataPath;

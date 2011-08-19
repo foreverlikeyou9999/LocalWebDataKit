@@ -87,6 +87,10 @@
 
 - (void)cancelCurrentDownload
 {
+    if(download) {
+        [delegate syncSessionFinishedDownload];
+    }
+    
     [download cancel];
     [download release];
     download = nil;
@@ -110,6 +114,8 @@
 - (void)downloadFile:(NSString *)fileURL
 {
     [self cancelCurrentDownload];
+    
+    [delegate syncSessionStartedDownload];
     
     downloadURL = [fileURL copy];
     download = [[ELDownload downloadWithURL:fileURL delegate:self] retain];
@@ -260,6 +266,11 @@
 #pragma mark Callbacks
 - (void)download:(ELDownload *)theDownload downloadedData:(NSData *)data
 {
+    [download release];
+    download = nil;
+    
+    [delegate syncSessionFinishedDownload];
+    
     if([downloadURL isEqualToString:[remoteManifestURL absoluteString]]) {
         [self writeData:data toContentPath:@"manifest.plist"];
         
@@ -279,6 +290,11 @@
 
 - (void)downloadFailed:(ELDownload *)theDownload
 {
+    [download release];
+    download = nil;
+    
+    [delegate syncSessionFinishedDownload];
+    
     NSString *theDownloadURL = [downloadURL copy];
     
     [self cancelSyncSession];

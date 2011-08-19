@@ -9,6 +9,9 @@
 #import "LWDKLocalWebDataSyncManager.h"
 #import "LWDKManifest.h"
 
+NSString *LWDKLocalWebDataSyncManagerStartedDownloadingContentNotification = @"LWDKLocalWebDataSyncManagerStartedDownloadingContentNotification";
+NSString *LWDKLocalWebDataSyncManagerStoppedDownloadingContentNotification = @"LWDKLocalWebDataSyncManagerStoppedDownloadingContentNotification";
+
 @interface LWDKLocalWebDataSyncManager (Private)
 @property (nonatomic, copy) NSString *seedDataPath;
 @property (nonatomic, copy) NSString *storedDataPath;
@@ -198,6 +201,16 @@
 - (void)refreshTimerExpired:(NSTimer *)timer
 {
     [self beginSyncSession];
+}
+
+- (void)syncSessionStartedDownload
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:LWDKLocalWebDataSyncManagerStartedDownloadingContentNotification object:self];
+}
+
+- (void)syncSessionFinishedDownload
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:LWDKLocalWebDataSyncManagerStoppedDownloadingContentNotification object:self];
 }
 
 - (void)syncSessionCommittedFiles:(NSArray *)fileNames
