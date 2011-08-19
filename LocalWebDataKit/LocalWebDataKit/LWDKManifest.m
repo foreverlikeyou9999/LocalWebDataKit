@@ -7,7 +7,6 @@
 //
 
 #import "LWDKManifest.h"
-#import "LWDKManifestFile.h"
 
 @implementation LWDKManifest
 @synthesize files;

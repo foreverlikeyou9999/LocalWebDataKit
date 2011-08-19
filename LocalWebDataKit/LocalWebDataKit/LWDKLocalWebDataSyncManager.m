@@ -7,6 +7,7 @@
 //
 
 #import "LWDKLocalWebDataSyncManager.h"
+#import "LWDKManifest.h"
 
 @interface LWDKLocalWebDataSyncManager (Private)
 @property (nonatomic, copy) NSString *seedDataPath;
@@ -96,6 +97,11 @@
     return [self.storedDataPath stringByAppendingPathComponent:@"manifest.plist"];
 }
 
+- (NSString *)seedManifestPath
+{
+    return [self.seedDataPath stringByAppendingPathComponent:@"manifest.plist"];
+}
+
 - (BOOL)manifestExistsAtStoredDataPath
 {
     return [[NSFileManager defaultManager] fileExistsAtPath:[self storedManifestPath]];
@@ -107,7 +113,24 @@
         return;
     }
     
-    NSLog(@"Copy from %@ to %@", self.seedDataPath, self.storedDataPath);
+    NSString *seedManifestPath = [self seedManifestPath];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:seedManifestPath]) {
+        return;
+    }
+    
+    [[NSFileManager defaultManager] copyItemAtPath:seedManifestPath toPath:[self storedManifestPath] error:0];
+    
+    NSData *manifestData = [NSData dataWithContentsOfFile:seedManifestPath];
+    LWDKManifest *manifest = [LWDKManifest manifestWithPListData:manifestData];
+    for(LWDKManifestFile *file in manifest.files) {
+        NSString *seedFilePath = [[self seedDataPath] stringByAppendingPathComponent:file.fileName];
+        NSString *storedFilePath = [[self storedDataPath] stringByAppendingPathComponent:file.fileName];
+        
+        NSString *storedFileDirectory = [storedFilePath stringByDeletingLastPathComponent];
+        [[NSFileManager defaultManager] createDirectoryAtPath:storedFileDirectory withIntermediateDirectories:YES attributes:nil error:0];
+        
+        [[NSFileManager defaultManager] copyItemAtPath:seedFilePath toPath:storedFilePath error:0];
+    }
 }
 
 - (void)beginSyncSession

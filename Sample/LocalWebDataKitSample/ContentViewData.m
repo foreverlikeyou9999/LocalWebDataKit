@@ -42,8 +42,8 @@
 #pragma mark Private
 - (NSString *)pathToContent:(NSString *)content
 {
-    NSString *resourcePath = [[NSBundle mainBundle] resourcePath];
-    NSString *contentPath = [resourcePath stringByAppendingPathComponent:@"Content"];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
+    NSString *contentPath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Content"];
     return [contentPath stringByAppendingPathComponent:content];
 }
 

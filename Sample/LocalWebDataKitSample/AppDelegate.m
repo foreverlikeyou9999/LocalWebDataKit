@@ -16,7 +16,7 @@
 - (NSString *)storedContentPath
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSApplicationSupportDirectory, NSUserDomainMask, YES);
-    return [paths objectAtIndex:0];
+    return [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Content"];
 }
 
 - (NSString *)resourceContentPath
@@ -28,6 +28,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    [[NSFileManager defaultManager] createDirectoryAtPath:[self storedContentPath] withIntermediateDirectories:YES attributes:nil error:0];
+    
     [[LWDKLocalWebDataSyncManager sharedLocalWebDataSyncManager] beginSyncingWithSeedDataPath:[self resourceContentPath]
                                                                                storedDataPath:[self storedContentPath]
                                                                             remoteManifestURL:nil

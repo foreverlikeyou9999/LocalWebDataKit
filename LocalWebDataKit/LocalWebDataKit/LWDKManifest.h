@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "LWDKManifestFile.h"
 
 @interface LWDKManifest : NSObject
 {
