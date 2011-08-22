@@ -6,6 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#import <CommonCrypto/CommonDigest.h>
 #import "LWDKLocalWebDataSyncManager.h"
 #import "LWDKManifest.h"
 
@@ -21,6 +22,8 @@ NSString *LWDKSyncFailedURLKey = @"LWDKSyncFailedURLKey";
 NSString *LWDKFailureReasonInconsistentSyncState = @"LWDKFailureReasonInconsistentSyncState";
 NSString *LWDKFailureReasonUnableToDownloadFile = @"LWDKFailureReasonUnableToDownloadFile";
 
+NSString *LWDKSeedManifestHashKey = @"LWDKSeedManifestHash";
+
 @interface LWDKLocalWebDataSyncManager (Private)
 @property (nonatomic, copy) NSString *seedDataPath;
 @property (nonatomic, copy) NSString *storedDataPath;
@@ -30,10 +33,13 @@ NSString *LWDKFailureReasonUnableToDownloadFile = @"LWDKFailureReasonUnableToDow
 - (NSString *)storedManifestPath;
 - (BOOL)manifestExistsAtStoredDataPath;
 - (void)copySeedData;
+- (void)copySeedDataIfNewSeedManifestFileFound;
 - (void)beginSyncSession;
 
 - (void)clearRefreshTimer;
 - (void)setRefreshTimer;
+
+- (NSString *)sha:(NSString *)content;
 @end
 
 @implementation LWDKLocalWebDataSyncManager
@@ -143,6 +149,28 @@ NSString *LWDKFailureReasonUnableToDownloadFile = @"LWDKFailureReasonUnableToDow
         
         [[NSFileManager defaultManager] copyItemAtPath:seedFilePath toPath:storedFilePath error:0];
     }
+    
+    NSString *hash = [self sha:[NSString stringWithContentsOfFile:seedManifestPath encoding:NSUTF8StringEncoding error:0]];
+    [[NSUserDefaults standardUserDefaults] setObject:hash forKey:LWDKSeedManifestHashKey];
+    [[NSUserDefaults standardUserDefaults] synchronize];
+}
+
+- (void)copySeedDataIfNewSeedManifestFileFound
+{
+    if(!self.seedDataPath) {
+        return;
+    }
+    
+    NSString *seedManifestPath = [self seedManifestPath];
+    if(![[NSFileManager defaultManager] fileExistsAtPath:seedManifestPath]) {
+        return;
+    }
+    
+    NSString *hash = [self sha:[NSString stringWithContentsOfFile:seedManifestPath encoding:NSUTF8StringEncoding error:0]];
+    NSString *storedHash = [[NSUserDefaults standardUserDefaults] objectForKey:LWDKSeedManifestHashKey];
+    if(![storedHash isEqualToString:hash]) {
+        [self copySeedData];
+    }
 }
 
 - (void)beginSyncSession
@@ -173,6 +201,22 @@ NSString *LWDKFailureReasonUnableToDownloadFile = @"LWDKFailureReasonUnableToDow
     }
 }
 
+- (NSString *)sha:(NSString *)content
+{
+    const char *cString = [content cStringUsingEncoding:NSASCIIStringEncoding];
+    
+    uint8_t digest[CC_SHA1_DIGEST_LENGTH];
+    CC_SHA1(cString, strlen(cString), digest);
+    
+    NSMutableString *output = [NSMutableString string];
+    
+    for(int i=0; i<CC_SHA1_DIGEST_LENGTH; i++) {
+        [output appendFormat:@"%02x", digest[i]];
+    }
+    
+    return output;
+}
+
 #pragma mark -
 #pragma mark Public API
 
@@ -191,6 +235,8 @@ NSString *LWDKFailureReasonUnableToDownloadFile = @"LWDKFailureReasonUnableToDow
     if(![self manifestExistsAtStoredDataPath]) {
         [self copySeedData];
     }
+    
+    [self copySeedDataIfNewSeedManifestFileFound];
     
     [self beginSyncSession];
     [self setRefreshTimer];
