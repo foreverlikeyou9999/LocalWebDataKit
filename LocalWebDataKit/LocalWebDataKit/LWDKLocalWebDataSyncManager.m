@@ -136,6 +136,7 @@ NSString *LWDKSeedManifestHashKey = @"LWDKSeedManifestHash";
         return;
     }
     
+    [[NSFileManager defaultManager] removeItemAtPath:[self storedManifestPath] error:0];
     [[NSFileManager defaultManager] copyItemAtPath:seedManifestPath toPath:[self storedManifestPath] error:0];
     
     NSData *manifestData = [NSData dataWithContentsOfFile:seedManifestPath];
@@ -147,6 +148,7 @@ NSString *LWDKSeedManifestHashKey = @"LWDKSeedManifestHash";
         NSString *storedFileDirectory = [storedFilePath stringByDeletingLastPathComponent];
         [[NSFileManager defaultManager] createDirectoryAtPath:storedFileDirectory withIntermediateDirectories:YES attributes:nil error:0];
         
+        [[NSFileManager defaultManager] removeItemAtPath:storedFilePath error:0];
         [[NSFileManager defaultManager] copyItemAtPath:seedFilePath toPath:storedFilePath error:0];
     }
     
