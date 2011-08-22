@@ -141,7 +141,9 @@ NSString *LWDKSeedManifestHashKey = @"LWDKSeedManifestHash";
     
     NSData *manifestData = [NSData dataWithContentsOfFile:seedManifestPath];
     LWDKManifest *manifest = [LWDKManifest manifestWithPListData:manifestData];
+    NSMutableArray *touchedFiles = [NSMutableArray array];
     for(LWDKManifestFile *file in manifest.files) {
+        [touchedFiles addObject:file.fileName];
         NSString *seedFilePath = [[self seedDataPath] stringByAppendingPathComponent:file.fileName];
         NSString *storedFilePath = [[self storedDataPath] stringByAppendingPathComponent:file.fileName];
         
@@ -155,6 +157,9 @@ NSString *LWDKSeedManifestHashKey = @"LWDKSeedManifestHash";
     NSString *hash = [self sha:[NSString stringWithContentsOfFile:seedManifestPath encoding:NSUTF8StringEncoding error:0]];
     [[NSUserDefaults standardUserDefaults] setObject:hash forKey:LWDKSeedManifestHashKey];
     [[NSUserDefaults standardUserDefaults] synchronize];
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:touchedFiles forKey:LWDKTouchedFilesKey];
+    [[NSNotificationCenter defaultCenter] postNotificationName:LWDKLocalWebDataSyncManagerFinishedSyncNotification object:self userInfo:userInfo];
 }
 
 - (void)copySeedDataIfNewSeedManifestFileFound
